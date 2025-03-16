@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NexusMedia | Esports Tournaments</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Import existing theme variables */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        :root {
+            --primary: #6c63ff;
+            --secondary: #ff52b8;
+            --dark: #121212;
+            --darker: #0a0a0a;
+            --light: #f8f9fa;
+            --text: #e0e0e0;
+            --accent: #00d9ff;
+            --success: #00ff88;
+            --transition: all 0.3s ease;
+        }
+
+        [data-theme="light"] {
+            --primary: #6c63ff;
+            --secondary: #ff52b8;
+            --dark: #f8f9fa;
+            --darker: #e9ecef;
+            --light: #121212;
+            --text: #333333;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: var(--dark);
+            color: var(--text);
+            transition: var(--transition);
+            padding-top: 80px;
+        }
+
+        /* Header Styles */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 1rem 5%;
+            background: rgba(10, 10, 10, 0.9);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .back-btn {
+            color: var(--text);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: var(--transition);
+        }
+
+        .back-btn:hover {
+            color: var(--primary);
+        }
+
+        /* Tournament Brackets */
+        .tournament-container {
+            padding: 2rem 5%;
+        }
+
+        .brackets {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .round {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .match {
+            background: rgba(18, 18, 18, 0.8);
+            border-radius: 10px;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: var(--transition);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .match:hover {
+            border-color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        .player {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex: 1;
+        }
+
+        .player-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .player-name {
+            font-weight: 500;
+        }
+
+        .player-seed {
+            font-size: 0.8rem;
+            opacity: 0.7;
+        }
+
+        .vs {
+            padding: 0 1rem;
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        /* Contact Modal */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: var(--darker);
+            padding: 2rem;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 500px;
+            position: relative;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text);
+            transition: var(--transition);
+        }
+
+        .close-modal:hover {
+            color: var(--primary);
+            transform: rotate(90deg);
+        }
+
+        .message-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .form-group label {
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            padding: 0.8rem;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text);
+            transition: var(--transition);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .send-btn {
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            padding: 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .send-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(108, 99, 255, 0.4);
+        }
+
+        /* Theme Switcher */
+        .theme-switch {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 1000;
+        }
+
+        .theme-switch i {
+            font-size: 1.5rem;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <a href="home.html" class="back-btn">
+            <i class="fas fa-arrow-left"></i>
+            <span>Back to Home</span>
+        </a>
+        <h1>Tournament Brackets</h1>
+    </header>
+
+    <div class="tournament-container">
+        <div class="brackets" id="brackets">
+            <!-- Brackets will be generated here -->
+        </div>
+    </div>
+
+    <!-- Contact Modal -->
+    <div class="modal" id="contactModal">
+        <div class="modal-content">
+            <i class="fas fa-times close-modal" id="closeModal"></i>
+            <h2>Contact Opponent</h2>
+            <form class="message-form" id="messageForm">
+                <div class="form-group">
+                    <label>Your Name</label>
+                    <input type="text" required>
+                </div>
+                <div class="form-group">
+                    <label>Proposed Match Time</label>
+                    <input type="datetime-local" required>
+                </div>
+                <div class="form-group">
+                    <label>Message</label>
+                    <textarea rows="4" required placeholder="Discuss match details, rules, etc..."></textarea>
+                </div>
+                <button type="submit" class="send-btn">Send Message</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Theme Switcher -->
+    <div class="theme-switch" id="themeSwitch">
+        <i class="fas fa-moon"></i>
+    </div>
+
+    <script>
+        // Theme switching
+        const themeSwitch = document.getElementById('themeSwitch');
+        const htmlElement = document.documentElement;
+        const themeIcon = themeSwitch.querySelector('i');
+
+        themeSwitch.addEventListener('click', () => {
+            const currentTheme = htmlElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            htmlElement.setAttribute('data-theme', newTheme);
+            themeIcon.className = newTheme === 'dark' ? 'fas fa-moon' : 'fas fa-sun';
+        });
+// Page transition
+document.body.style.opacity = '0';
+window.onload = () => {
+    document.body.style.opacity = '1';
+    document.body.style.transition = 'opacity 0.5s ease';
+};
+        // Generate tournament brackets
+        const participants = [
+            { name: 'Player 1', seed: 1 },
+            { name: 'Player 2', seed: 8 },
+            { name: 'Player 3', seed: 4 },
+            { name: 'Player 4', seed: 5 },
+            { name: 'Player 5', seed: 2 },
+            { name: 'Player 6', seed: 7 },
+            { name: 'Player 7', seed: 3 },
+            { name: 'Player 8', seed: 6 }
+        ];
+
+        function generateMatches(players) {
+            const brackets = document.getElementById('brackets');
+            const round = document.createElement('div');
+            round.className = 'round';
+
+            for (let i = 0; i < players.length; i += 2) {
+                const match = document.createElement('div');
+                match.className = 'match';
+                match.innerHTML = `
+                    <div class="player">
+                        <div class="player-info">
+                            <span class="player-name">${players[i].name}</span>
+                            <span class="player-seed">Seed #${players[i].seed}</span>
+                        </div>
+                    </div>
+                    <span class="vs">VS</span>
+                    <div class="player">
+                        <div class="player-info">
+                            <span class="player-name">${players[i + 1].name}</span>
+                            <span class="player-seed">Seed #${players[i + 1].seed}</span>
+                        </div>
+                    </div>
+                `;
+                match.addEventListener('click', () => openContactModal(players[i], players[i + 1]));
+                round.appendChild(match);
+            }
+            brackets.appendChild(round);
+        }
+
+        // Modal functionality
+        const modal = document.getElementById('contactModal');
+        const closeModal = document.getElementById('closeModal');
+        const messageForm = document.getElementById('messageForm');
+
+        function openContactModal(player1, player2) {
+            modal.classList.add('active');
+        }
+
+        closeModal.addEventListener('click', () => {
+            modal.classList.remove('active');
+        });
+
+        messageForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            // Handle form submission here
+            alert('Message sent successfully!');
+            modal.classList.remove('active');
+        });
+
+        // Initialize brackets
+        generateMatches(participants);
+
+        // Page transition
+        document.body.style.opacity = '0';
+        window.onload = () => {
+            document.body.style.opacity = '1';
+            document.body.style.transition = 'opacity 0.5s ease';
+        };
+    </script>
+</body>
+</html>

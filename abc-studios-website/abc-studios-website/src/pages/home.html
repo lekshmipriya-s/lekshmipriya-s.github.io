@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NexusMedia | Creative Media Production</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+
+    /* Add these new styles after your existing CSS variables */
+    
+    /* Header Styles */
+    .header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        padding: 1rem 5%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: rgba(10, 10, 10, 0.5);
+        backdrop-filter: blur(10px);
+        z-index: 1000;
+        transition: var(--transition);
+    }
+
+    .header-logo {
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+        text-decoration: none;
+    }
+
+    .header-logo i {
+        font-size: 2rem;
+        color: var(--primary);
+        animation: pulse 2s infinite;
+    }
+
+    .header-logo span {
+        font-size: 1.5rem;
+        font-weight: 700;
+        background: linear-gradient(45deg, var(--primary), var(--secondary));
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+    }
+
+    /* Scroll Indicator */
+    .scroll-indicator {
+        position: absolute;
+        bottom: 2rem;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+        color: var(--text);
+        cursor: pointer;
+        transition: var(--transition);
+        z-index: 2;
+    }
+
+    .scroll-indicator i {
+        font-size: 2rem;
+        animation: bounce 2s infinite;
+    }
+
+    .scroll-indicator:hover {
+        color: var(--primary);
+        transform: translate(-50%, -5px);
+    }
+
+    /* Mission Overlay */
+    .mission-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background: rgba(10, 10, 10, 0.95);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.5s ease;
+        z-index: 1001;
+    }
+
+    .mission-overlay.active {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .mission-content {
+        max-width: 800px;
+        padding: 2rem;
+        text-align: center;
+        transform: translateY(30px);
+        transition: all 0.5s ease;
+    }
+
+    .mission-overlay.active .mission-content {
+        transform: translateY(0);
+    }
+
+    .mission-content h2 {
+        font-size: 2.5rem;
+        margin-bottom: 1.5rem;
+        background: linear-gradient(45deg, var(--primary), var(--secondary));
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+    }
+
+    .close-mission {
+        position: absolute;
+        top: 2rem;
+        right: 2rem;
+        font-size: 2rem;
+        color: var(--text);
+        cursor: pointer;
+        transition: var(--transition);
+    }
+
+    .close-mission:hover {
+        color: var(--primary);
+        transform: rotate(90deg);
+    }
+
+    /* Additional Animations */
+    @keyframes bounce {
+        0%, 20%, 50%, 80%, 100% {
+            transform: translateY(0);
+        }
+        40% {
+            transform: translateY(-10px);
+        }
+        60% {
+            transform: translateY(-5px);
+        }
+    }
+
+    @keyframes pulse {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.1); }
+        100% { transform: scale(1); }
+    }
+
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        :root {
+            --primary: #6c63ff;
+            --secondary: #ff52b8;
+            --dark: #121212;
+            --darker: #0a0a0a;
+            --light: #f8f9fa;
+            --text: #e0e0e0;
+            --accent: #00d9ff;
+            --success: #00ff88;
+            --transition: all 0.3s ease;
+        }
+
+        [data-theme="light"] {
+            --primary: #6c63ff;
+            --secondary: #ff52b8;
+            --dark: #f8f9fa;
+            --darker: #e9ecef;
+            --light: #121212;
+            --text: #333333;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: var(--dark);
+            color: var(--text);
+            transition: var(--transition);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Animated Navigation */
+        .nav-container {
+            position: fixed;
+            top: 50%;
+            right: 30px;
+            transform: translateY(-50%);
+            z-index: 1000;
+        }
+
+        .nav-icons {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            background: rgba(18, 18, 18, 0.8);
+            padding: 20px;
+            border-radius: 30px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav-item {
+            position: relative;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text);
+            text-decoration: none;
+            transition: var(--transition);
+            border-radius: 50%;
+        }
+
+        .nav-item i {
+            font-size: 1.5rem;
+            transition: var(--transition);
+        }
+
+        .nav-item:hover {
+            background: var(--primary);
+            transform: translateX(-10px);
+        }
+
+        .nav-item:hover i {
+            color: white;
+            transform: scale(1.2);
+        }
+
+        .nav-tooltip {
+            position: absolute;
+            right: 60px;
+            background: var(--primary);
+            padding: 5px 15px;
+            border-radius: 20px;
+            color: white;
+            font-size: 0.9rem;
+            opacity: 0;
+            pointer-events: none;
+            transition: var(--transition);
+            white-space: nowrap;
+        }
+
+        .nav-item:hover .nav-tooltip {
+            opacity: 1;
+            right: 70px;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, rgba(108, 99, 255, 0.1), rgba(255, 82, 184, 0.1));
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 0 20px;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: textGlow 3s infinite alternate;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 15px 40px;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 500;
+            transition: var(--transition);
+            box-shadow: 0 5px 15px rgba(108, 99, 255, 0.4);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(108, 99, 255, 0.6);
+        }
+
+        /* Theme Switcher */
+        .theme-switch {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 1000;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transition: var(--transition);
+        }
+
+        .theme-switch:hover {
+            transform: rotate(45deg);
+        }
+
+        .theme-switch i {
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        /* Footer Styles */
+        .footer {
+            background: var(--darker);
+            padding: 4rem 2rem 2rem;
+            margin-top: auto;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+        }
+
+        .footer-section h3 {
+            color: var(--primary);
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -8px;
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            border-radius: 3px;
+        }
+
+        .footer-section p {
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(108, 99, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .social-link:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-5px);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 1rem;
+        }
+
+        .footer-links a {
+            color: var(--text);
+            text-decoration: none;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+            transform: translateX(5px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+    /* Add these CSS variables if not already present */
+    :root {
+        --primary: #6c63ff;
+        --secondary: #ff52b8;
+        --dark: #121212;
+        --darker: #0a0a0a;
+        --light: #f8f9fa;
+        --text: #e0e0e0;
+        --transition: all 0.3s ease;
+    }
+
+    [data-theme="light"] {
+        --primary: #6c63ff;
+        --secondary: #ff52b8;
+        --dark: #f8f9fa;
+        --darker: #e9ecef;
+        --light: #121212;
+        --text: #333333;
+    }
+
+        [data-theme="light"] .footer-bottom {
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes textGlow {
+            from {
+                text-shadow: 0 0 20px rgba(108, 99, 255, 0.5);
+            }
+            to {
+                text-shadow: 0 0 30px rgba(255, 82, 184, 0.8);
+            }
+        }
+
+        /* Media Queries */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+            
+            .nav-container {
+                bottom: 20px;
+                top: auto;
+                right: 50%;
+                transform: translateX(50%);
+            }
+            
+            .nav-icons {
+                flex-direction: row;
+                padding: 15px;
+            }
+            
+            .nav-tooltip {
+                display: none;
+            }
+            
+            .theme-switch {
+                bottom: 90px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <!-- Replace the existing nav-container section with this updated one -->
+    <nav class="nav-container">
+        <div class="nav-icons">
+            <a href="{{ url_for('home') }}" class="nav-item active">
+                <i class="fas fa-home"></i>
+                <span class="nav-tooltip">Home</span>
+            </a>
+            <a href="{{ url_for('services') }}" class="nav-item">
+                <i class="fas fa-film"></i>
+                <span class="nav-tooltip">Services</span>
+            </a>
+            <a href="{{ url_for('portfolio') }}" class="nav-item">
+                <i class="fas fa-images"></i>
+                <span class="nav-tooltip">Portfolio</span>
+            </a>
+            <a href="{{ url_for('blog') }}" class="nav-item">
+                <i class="fas fa-blog"></i>
+                <span class="nav-tooltip">Blog</span>
+            </a>
+            <a href="{{ url_for('tournaments') }}" class="nav-item">
+                <i class="fas fa-gamepad"></i>
+                <span class="nav-tooltip">Esports</span>
+            </a>
+            <a href="{{ url_for('about') }}" class="nav-item">
+                <i class="fas fa-info-circle"></i>
+                <span class="nav-tooltip">About</span>
+            </a>
+            <a href="{{ url_for('join') }}" class="nav-item">
+                <i class="fas fa-user-plus"></i>
+                <span class="nav-tooltip">Join Us</span>
+            </a>
+            <!-- Add this after the Join Us nav-item -->
+<a href="{{ url_for('admin') }}" class="nav-item">
+    <i class="fas fa-user-shield"></i>
+    <span class="nav-tooltip">Admin</span>
+</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <!-- Update the CTA button in the hero section -->
+<div class="hero-content">
+    <h1>NexusMedia Studios</h1>
+    <p>Crafting Digital Experiences Through Innovation</p>
+    <p>We specialize in live streaming, media production, digital marketing, and esports services.</p>
+    <a href="./contact.html" class="cta-button">Get Started</a>
+</div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About Us</h3>
+                <p>NexusMedia Studios is a creative powerhouse specializing in live streaming, media production, digital marketing, and esports services. We turn ideas into digital excellence.</p>
+                <div class="social-links">
+                    <a href="https://facebook.com" class="social-link" target="_blank">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://twitter.com" class="social-link" target="_blank">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="https://instagram.com" class="social-link" target="_blank">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://linkedin.com" class="social-link" target="_blank">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="https://youtube.com" class="social-link" target="_blank">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                    <a href="https://twitch.tv" class="social-link" target="_blank">
+                        <i class="fab fa-twitch"></i>
+                    </a>
+                </div>
+            </div>
+            <!-- Update the Quick Links section in the footer -->
+<div class="footer-section">
+    <h3>Quick Links</h3>
+    <ul class="footer-links">
+        <li><a href="./services.html"><i class="fas fa-chevron-right"></i>Our Services</a></li>
+        <li><a href="./portfolio.html"><i class="fas fa-chevron-right"></i>Portfolio</a></li>
+        <li><a href="./blog.html"><i class="fas fa-chevron-right"></i>Blog</a></li>
+        <li><a href="./tournaments.html"><i class="fas fa-chevron-right"></i>Esports</a></li>
+        <li><a href="./contact.html"><i class="fas fa-chevron-right"></i>Contact Us</a></li>
+    </ul>
+</div>
+                <h3>Contact Info</h3>
+                <ul class="footer-links">
+                    <li><a href="#"><i class="fas fa-map-marker-alt"></i>123 Digital Avenue, Tech City</a></li>
+                    <li><a href="tel:+1234567890"><i class="fas fa-phone"></i>+1 (234) 567-8900</a></li>
+                    <li><a href="mailto:hello@nexusmedia.com"><i class="fas fa-envelope"></i>hello@nexusmedia.com</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 NexusMedia Studios. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Theme Switcher -->
+    <div class="theme-switch" id="themeSwitch">
+        <i class="fas fa-moon"></i>
+    </div>
+
+    <!-- Replace the existing theme switcher script -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const themeSwitch = document.getElementById('themeSwitch');
+        const htmlElement = document.documentElement;
+        const themeIcon = themeSwitch.querySelector('i');
+
+        function setTheme(theme) {
+            htmlElement.setAttribute('data-theme', theme);
+            themeIcon.className = theme === 'dark' ? 'fas fa-moon' : 'fas fa-sun';
+            localStorage.setItem('theme', theme);
+        }
+
+        // Load saved theme
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        setTheme(savedTheme);
+
+        // Theme toggle
+        themeSwitch.addEventListener('click', () => {
+            const currentTheme = htmlElement.getAttribute('data-theme');
+            setTheme(currentTheme === 'dark' ? 'light' : 'dark');
+        });
+
+        // Active navigation indicator
+        const navItems = document.querySelectorAll('.nav-item');
+        
+        navItems.forEach(item => {
+            item.addEventListener('click', () => {
+                navItems.forEach(i => i.classList.remove('active'));
+                item.classList.add('active');
+            });
+        });
+    });
+</script>
+</body>
+</html>

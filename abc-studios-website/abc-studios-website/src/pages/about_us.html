@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | NexusMedia</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/about_us.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="header-actions">
+        <a href="{{ url_for('home') }}" class="home-button"></a>
+            <i class="fas fa-home"></i>
+            <span>Back to Home</span>
+        </a>
+    </div>
+    
+    <header class="hero-section">
+        <div class="overlay">
+            <h1 class="company-title">NexusMedia</h1>
+            <h2 class="hero-title">About Us</h2>
+            <p class="hero-subtitle">Welcome to our world of innovation and creativity!</p>
+        </div>
+    </header>
+
+    <!-- Vision and Mission Section -->
+    <section class="vision-mission">
+        <div class="vision">
+            <h3>Vision</h3>
+            <p>Our vision is to create a better everyday life for everyone through innovation and care.</p>
+        </div>
+        <div class="mission">
+            <h3>Mission</h3>
+            <p>Our mission is to make meaningful impact by delivering quality and value in all that we do.</p>
+        </div>
+    </section>
+
+    <!-- Replace the team section -->
+<section class="team-section">
+    <h2>Our Team</h2>
+    <p>Meet the talented professionals behind our success!</p>
+    <div class="team-grid">
+        <div class="flip-card">
+            <div class="flip-card-inner">
+                <div class="flip-card-front">
+                    <img src="../assets/images/member1.jpg" alt="CEO" onerror="this.src='https://via.placeholder.com/150'">
+                    <h3>John Doe</h3>
+                    <p>Chief Executive Officer</p>
+                </div>
+                <div class="flip-card-back">
+                    <h3>John Doe</h3>
+                    <p>Visionary leader with 15+ years in digital media</p>
+                    <div class="social-links">
+                        <a href="https://linkedin.com" target="_blank">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="flip-card">
+            <div class="flip-card-inner">
+                <div class="flip-card-front">
+                    <img src="../assets/images/member2.jpg" alt="Creative Director" onerror="this.src='https://via.placeholder.com/150'">
+                    <h3>Sarah Smith</h3>
+                    <p>Creative Director</p>
+                </div>
+                <div class="flip-card-back">
+                    <h3>Sarah Smith</h3>
+                    <p>Award-winning creative director specializing in multimedia production</p>
+                    <div class="social-links">
+                        <a href="https://linkedin.com" target="_blank">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="flip-card">
+            <div class="flip-card-inner">
+                <div class="flip-card-front">
+                    <img src="../assets/images/member3.jpg" alt="Technical Lead" onerror="this.src='https://via.placeholder.com/150'">
+                    <h3>Michael Chen</h3>
+                    <p>Technical Lead</p>
+                </div>
+                <div class="flip-card-back">
+                    <h3>Michael Chen</h3>
+                    <p>Expert in streaming technology and digital infrastructure</p>
+                    <div class="social-links">
+                        <a href="https://linkedin.com" target="_blank">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="flip-card">
+            <div class="flip-card-inner">
+                <div class="flip-card-front">
+                    <img src="../assets/images//member4.jpg" alt="Marketing Head" onerror="this.src='https://via.placeholder.com/150'">
+                    <h3>Emma Wilson</h3>
+                    <p>Marketing Head</p>
+                </div>
+                <div class="flip-card-back">
+                    <h3>Emma Wilson</h3>
+                    <p>Digital marketing strategist with expertise in brand development</p>
+                    <div class="social-links">
+                        <a href="https://linkedin.com" target="_blank">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+                <!-- Add these new team members before the closing team-grid div -->
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <img src="../assets/images/member5.jpg" alt="Production Manager" onerror="this.src='https://via.placeholder.com/150'">
+                            <h3>David Parker</h3>
+                            <p>Production Manager</p>
+                        </div>
+                        <div class="flip-card-back">
+                            <h3>David Parker</h3>
+                            <p>Expert in coordinating large-scale live events and productions</p>
+                            <div class="social-links">
+                                <a href="https://linkedin.com" target="_blank">
+                                    <i class="fab fa-linkedin"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <img src="../assets/images/member6.jpg" alt="Lead Developer" onerror="this.src='https://via.placeholder.com/150'">
+                            <h3>Alex Rodriguez</h3>
+                            <p>Lead Developer</p>
+                        </div>
+                        <div class="flip-card-back">
+                            <h3>Alex Rodriguez</h3>
+                            <p>Full-stack developer specializing in streaming platforms</p>
+                            <div class="social-links">
+                                <a href="https://linkedin.com" target="_blank">
+                                    <i class="fab fa-linkedin"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <img src="../assets/images/member7.jpg" alt="Content Strategist" onerror="this.src='https://via.placeholder.com/150'">
+                            <h3>Sophie Kim</h3>
+                            <p>Content Strategist</p>
+                        </div>
+                        <div class="flip-card-back">
+                            <h3>Sophie Kim</h3>
+                            <p>Digital content expert with focus on engagement and analytics</p>
+                            <div class="social-links">
+                                <a href="https://linkedin.com" target="_blank">
+                                    <i class="fab fa-linkedin"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <img src="../assets/images/member8.jpg" alt="UX Designer" onerror="this.src='https://via.placeholder.com/150'">
+                            <h3>Ryan Thompson</h3>
+                            <p>UX Designer</p>
+                        </div>
+                        <div class="flip-card-back">
+                            <h3>Ryan Thompson</h3>
+                            <p>Creating seamless user experiences across digital platforms</p>
+                            <div class="social-links">
+                                <a href="https://linkedin.com" target="_blank">
+                                    <i class="fab fa-linkedin"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    </div>
+</section>
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2025 NexusMedia Studios. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>

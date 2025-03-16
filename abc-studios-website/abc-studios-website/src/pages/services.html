@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Services | Event Solutions</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/services.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+    <!-- Hero Section -->
+    <!-- Replace the existing header section -->
+    <!-- Replace the existing header section -->
+    <!-- Replace the existing header section -->
+<!-- Replace the current hero section -->
+<header class="hero-section">
+    <div class="overlay">
+        <h1 class="hero-title">Our Services</h1>
+    </div>
+    <div class="header-actions">
+        <a href="{{ url_for('home') }}" class="home-button"></a>
+            <i class="fas fa-home"></i>
+            <span>Back to Home</span>
+        </a>
+    </div>
+</header>
+
+    <!-- Services Section -->
+    <section class="services-container">
+        <h3 class="section-subtitle">WHAT WE OFFER</h3>
+        <h2 class="section-title">Seamless Event Solutions<br> Tailored for You</h2>
+        <p class="section-description">
+            From live streaming to event planning, we provide cutting-edge solutions for all event needs.
+        </p>
+
+        <!-- Replace the existing service-grid section -->
+<div class="service-grid">
+    <!-- Row 1: Live Streaming and Media Production -->
+    <div class="service-card">
+        <div class="service-content">
+            <i class="fas fa-broadcast-tower"></i>
+            <h3>Live Streaming</h3>
+            <p>Ensure smooth virtual and hybrid events with real-time, high-quality streaming.</p>
+            <a href="javascript:void(0);" class="learn-more" onclick="toggleDescription('desc1')">LEARN MORE →</a>
+            <p id="desc1" class="learn-more-description">
+                Our live streaming service allows you to connect with a global audience in real time. 
+                We use state-of-the-art technology to provide seamless, high-definition streaming with minimal latency.
+            </p>
+        </div>
+    </div>
+
+    <div class="service-card">
+        <div class="service-content">
+            <i class="fas fa-video"></i>
+            <h3>Media Production</h3>
+            <p>Capture every moment with professional videography, photography, and editing.</p>
+            <a href="javascript:void(0);" class="learn-more" onclick="toggleDescription('desc2')">LEARN MORE →</a>
+            <p id="desc2" class="learn-more-description">
+                From pre-event planning to post-production, our team ensures high-quality visuals, 
+                creative storytelling, and cinematic edits that bring your event to life.
+            </p>
+        </div>
+    </div>
+
+    <!-- Row 2: Digital Marketing and Event Management -->
+    <div class="service-card">
+        <div class="service-content">
+            <i class="fas fa-bullhorn"></i>
+            <h3>Digital Marketing</h3>
+            <p>Boost your event's reach with SEO, social media, and targeted ad campaigns.</p>
+            <a href="javascript:void(0);" class="learn-more" onclick="toggleDescription('desc3')">LEARN MORE →</a>
+            <p id="desc3" class="learn-more-description">
+                We provide strategic marketing campaigns that increase event awareness, 
+                improve audience engagement, and maximize your event's online visibility.
+            </p>
+        </div>
+    </div>
+
+    <div class="service-card">
+        <div class="service-content">
+            <i class="fas fa-calendar-check"></i>
+            <h3>Event Management</h3>
+            <p>Flawless event planning and execution, ensuring a seamless experience.</p>
+            <a href="javascript:void(0);" class="learn-more" onclick="toggleDescription('desc4')">LEARN MORE →</a>
+            <p id="desc4" class="learn-more-description">
+                Our expert team takes care of everything, from venue selection to logistics coordination, 
+                ensuring a stress-free and successful event experience.
+            </p>
+        </div>
+    </div>
+</div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <p>© 2025 Event Solutions. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        function toggleDescription(id) {
+            var desc = document.getElementById(id);
+            if (desc.style.display === "none" || desc.style.display === "") {
+                desc.style.display = "block";
+            } else {
+                desc.style.display = "none";
+            }
+        }
+    </script>
+
+</body>
+</html>

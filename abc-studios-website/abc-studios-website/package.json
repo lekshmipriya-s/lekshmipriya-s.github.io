@@ -1,0 +1,24 @@
+{
+  "name": "abc-studios-website",
+  "version": "1.0.0",
+  "description": "A fully functional and visually appealing website for ABC Studios, specializing in live streaming, media production, digital marketing, event management, and esports services.",
+  "main": "src/js/script.js",
+  "scripts": {
+    "start": "live-server src",
+    "build": "echo 'Build process not defined yet.'"
+  },
+  "keywords": [
+    "website",
+    "abc studios",
+    "live streaming",
+    "media production",
+    "digital marketing",
+    "event management",
+    "esports"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "dependencies": {
+    "live-server": "^1.2.1"
+  }
+}

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog | NexusMedia</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/blog.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Replace old header with new home button -->
+    <div class="header-actions">
+        <a href="{{ url_for('home') }}" class="home-button"></a>
+            <i class="fas fa-home"></i>
+            <span>Back to Home</span>
+        </a>
+    </div>
+
+    
+
+
+    <!-- Add this after your navigation section -->
+<div class="blog-header">
+    <h1>NexusMedia</h1>
+    <p>Explore insights on digital marketing, event planning, and media production.</p>
+</div>
+
+<div class="blog-container">
+    <div class="blog-card">
+        <img src="../assets/images/digital_marketing.jpg" alt="Digital Marketing Trends">
+        <h2>Digital Marketing Trends</h2>
+        <p class="blog-excerpt">Discover the latest trends in social media and SEO.</p>
+        <p class="blog-content" style="display: none;">
+            Digital marketing is evolving rapidly, with new strategies and technologies shaping the future.
+        </p>
+        <button onclick="toggleReadMore(this)">Read More</button>
+    </div>
+
+    <div class="blog-card">
+        <img src="../assets/images/event_planning.jpg" alt="Event Planning Tips">
+        <h2>Event Planning Tips</h2>
+        <p class="blog-excerpt">Expert advice on managing successful events.</p>
+        <p class="blog-content" style="display: none;">
+            Learn how to create memorable experiences that leave lasting impressions.
+        </p>
+        <button onclick="toggleReadMore(this)">Read More</button>
+    </div>
+
+    <div class="blog-card">
+        <img src="../assets/images/behind_the_scenes.jpg" alt="Behind the Scenes">
+        <h2>Behind the Scenes</h2>
+        <p class="blog-excerpt">Explore how our team works on media production.</p>
+        <p class="blog-content" style="display: none;">
+            Get an inside look at how we bring creative visions to life.
+        </p>
+        <button onclick="toggleReadMore(this)">Read More</button>
+    </div>
+</div>
+    
+    <!-- Blog Content -->
+    <script>
+        function toggleReadMore(button) {
+            const card = button.closest('.blog-card');
+            const excerpt = card.querySelector('.blog-excerpt');
+            const content = card.querySelector('.blog-content');
+            
+            if (content.style.display === 'none') {
+                excerpt.style.display = 'none';
+                content.style.display = 'block';
+                button.textContent = 'Read Less';
+            } else {
+                excerpt.style.display = 'block';
+                content.style.display = 'none';
+                button.textContent = 'Read More';
+            }
+        }
+        
+        // ...rest of your existing scripts...
+        </script>
+    <!-- Footer -->
+    <!-- Replace the existing footer section -->
+<footer class="footer">
+    <div class="footer-content">
+        <div class="footer-section">
+            <h3>About Us</h3>
+            <p>NexusMedia Studios is a creative powerhouse specializing in live streaming, media production, digital marketing, and esports services. We turn ideas into digital excellence.</p>
+            <div class="social-links">
+                <a href="https://facebook.com" class="social-link" target="_blank">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="https://twitter.com" class="social-link" target="_blank">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="https://instagram.com" class="social-link" target="_blank">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://linkedin.com" class="social-link" target="_blank">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="https://youtube.com" class="social-link" target="_blank">
+                    <i class="fab fa-youtube"></i>
+                </a>
+                <a href="https://twitch.tv" class="social-link" target="_blank">
+                    <i class="fab fa-twitch"></i>
+                </a>
+            </div>
+        </div>
+        <div class="footer-section">
+            <h3>Quick Links</h3>
+            <ul class="footer-links">
+                <li><a href="./services.html"><i class="fas fa-chevron-right"></i>Our Services</a></li>
+                <li><a href="./portfolio.html"><i class="fas fa-chevron-right"></i>Portfolio</a></li>
+                <li><a href="./blog.html"><i class="fas fa-chevron-right"></i>Blog</a></li>
+                <li><a href="./esports.html"><i class="fas fa-chevron-right"></i>Esports</a></li>
+                <li><a href="./contact.html"><i class="fas fa-chevron-right"></i>Contact Us</a></li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h3>Contact Info</h3>
+            <ul class="footer-links">
+                <li><a href="#"><i class="fas fa-map-marker-alt"></i>123 Digital Avenue, Tech City</a></li>
+                <li><a href="tel:+1234567890"><i class="fas fa-phone"></i>+1 (234) 567-8900</a></li>
+                <li><a href="mailto:hello@nexusmedia.com"><i class="fas fa-envelope"></i>hello@nexusmedia.com</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2025 NexusMedia Studios. All rights reserved.</p>
+    </div>
+</footer>
+
+<script>
+    function toggleReadMore(button) {
+        const card = button.closest('.blog-card');
+        const excerpt = card.querySelector('.blog-excerpt');
+        const content = card.querySelector('.blog-content');
+        
+        if (content.style.display === 'none') {
+            excerpt.style.display = 'none';
+            content.style.display = 'block';
+            button.textContent = 'Read Less';
+        } else {
+            excerpt.style.display = 'block';
+            content.style.display = 'none';
+            button.textContent = 'Read More';
+        }
+    }
+    
+    // ...rest of your existing scripts...
+    </script> 
+</body>
+</html>

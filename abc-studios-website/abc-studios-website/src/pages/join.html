@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join Us | ABC Studios</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #6c63ff;
+            --secondary: #ff52b8;
+            --dark: #121212;
+            --darker: #0a0a0a;
+            --text: #e0e0e0;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(rgba(10, 10, 10, 0.8), rgba(10, 10, 10, 0.9)),
+                        url('/static/images/promobg.jpeg') no-repeat center center fixed;
+            background-size: cover;
+            color: var(--text);
+            min-height: 100vh;
+        }
+
+        
+
+        .header a {
+            color: var(--text);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            width: fit-content;
+        }
+
+        /* Remove the old header styles */
+.header {
+    display: none;
+}
+
+/* Add new home button styles */
+.header-actions {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+.home-button {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1.5rem;
+    background: linear-gradient(45deg, var(--primary), var(--secondary));
+    border-radius: 25px;
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    transition: var(--transition);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.home-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(108, 99, 255, 0.3);
+}
+
+.home-button i {
+    font-size: 1.2rem;
+}
+
+/* Hero Section Styles */
+.hero-section {
+        min-height: 60vh;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        background: linear-gradient(135deg, rgba(108, 99, 255, 0.1), rgba(255, 82, 184, 0.1));
+        padding: 100px 20px 50px;
+    }
+
+    .hero-title {
+        font-size: 4.5rem;
+        margin-bottom: 1rem;
+        background: linear-gradient(45deg, var(--primary), var(--secondary));
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        animation: titleGlow 3s infinite alternate;
+    }
+    .hero-subtitle {
+        font-size: 1.2rem;
+        color: var(--text);
+        opacity: 0.9;
+    }
+
+    @keyframes titleGlow {
+        from {
+            text-shadow: 0 0 20px rgba(108, 99, 255, 0.5);
+        }
+        to {
+            text-shadow: 0 0 30px rgba(255, 82, 184, 0.8);
+        }
+    }
+
+    /* Update container margin */
+    .container {
+        margin: 40px auto;
+    }
+/* Update media queries */
+@media (max-width: 768px) {
+        .hero-title {
+            font-size: 3rem;
+        }
+        
+        .hero-subtitle {
+            font-size: 1rem;
+        }
+    }
+
+/* Add to existing media queries */
+@media (max-width: 768px) {
+    
+    .home-button span {
+        display: none;
+    }
+    
+    .home-button {
+        padding: 0.5rem;
+    }
+}
+
+        .container {
+            max-width: 1200px;
+            margin: 100px auto 40px;
+            padding: 2rem;
+        }
+
+        .jobs-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .job-card {
+            background: rgba(18, 18, 18, 0.9);
+            border-radius: 15px;
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .job-image {
+            width: 100%;
+            height: 200px;
+            border-radius: 10px;
+            object-fit: cover;
+            margin-bottom: 1.5rem;
+        }
+
+        .job-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--text);
+        }
+
+        .job-description {
+            margin-bottom: 1.5rem;
+            opacity: 0.8;
+            line-height: 1.6;
+        }
+
+        .apply-btn {
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
+            z-index: 1000;
+        }
+
+        .modal.active {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: var(--darker);
+            padding: 2.5rem;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 600px;
+            position: relative;
+        }
+
+        .close-modal {
+            position: absolute;
+            right: 1.5rem;
+            top: 1.5rem;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            color: var(--text);
+        }
+
+        @media (max-width: 768px) {
+            .jobs-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header-actions">
+        <a href="{{ url_for('home') }}" class="home-button"></a>
+            <i class="fas fa-home"></i>
+            <span>Back to Home</span>
+        </a>
+    </div>
+<!-- Replace the existing jobs-grid content -->
+<header class="hero-section">
+    <div class="overlay">
+        <h1 class="hero-title">Join Our Team</h1>
+        <p class="hero-subtitle">Be part of something extraordinary</p>
+    </div>
+</header>
+    
+    <div class="jobs-grid">
+        <div class="job-card">
+            <img src="../assets/images/job1.jpg" alt="Game Developer" class="job-image">
+            <h3 class="job-title">Game Developer</h3>
+            <p class="job-description">Join our game development team to create immersive gaming experiences using Unity and Unreal Engine.</p>
+            <button class="apply-btn">Apply Now</button>
+        </div>
+
+        <div class="job-card">
+            <img src="../assets/images/job2.jpg" alt="3D Artist" class="job-image">
+            <h3 class="job-title">3D Artist</h3>
+            <p class="job-description">Create stunning 3D models and animations for our games and virtual experiences.</p>
+            <button class="apply-btn">Apply Now</button>
+        </div>
+
+        <div class="job-card">
+            <img src="../assets/images/job3.jpg" alt="UI/UX Designer" class="job-image">
+            <h3 class="job-title">UI/UX Designer</h3>
+            <p class="job-description">Design intuitive and engaging user interfaces for our digital products and games.</p>
+            <button class="apply-btn">Apply Now</button>
+        </div>
+
+        <div class="job-card">
+            <img src="../assets/images/job4.jpg" alt="Game Producer" class="job-image">
+            <h3 class="job-title">Game Producer</h3>
+            <p class="job-description">Lead and coordinate game development projects from concept to launch.</p>
+            <button class="apply-btn">Apply Now</button>
+        </div>
+    </div>
+</div>
+    
+
+    <!-- Application Modal -->
+    <div class="modal" id="applyModal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Apply for <span id="jobTitle"></span></h2>
+            <form id="applicationForm">
+                <div class="form-group">
+                    <label>Full Name*</label>
+                    <input type="text" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label>Email*</label>
+                    <input type="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label>Phone*</label>
+                    <input type="tel" name="phone" required>
+                </div>
+                <div class="form-group">
+                    <label>Resume (PDF)*</label>
+                    <input type="file" name="resume" accept=".pdf" required>
+                </div>
+                <div class="form-group">
+                    <label>Cover Letter</label>
+                    <textarea name="coverLetter" rows="4"></textarea>
+                </div>
+                <button type="submit" class="apply-btn">Submit Application</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const modal = document.getElementById('applyModal');
+        const jobTitle = document.getElementById('jobTitle');
+        const applicationForm = document.getElementById('applicationForm');
+        const closeModal = document.querySelector('.close-modal');
+
+        // Open modal on apply button click
+        document.querySelectorAll('.apply-btn').forEach(button => {
+            button.addEventListener('click', () => {
+                const title = button.closest('.job-card').querySelector('.job-title').textContent;
+                jobTitle.textContent = title;
+                modal.classList.add('active');
+            });
+        });
+
+        // Close modal
+        closeModal.addEventListener('click', () => {
+            modal.classList.remove('active');
+        });
+
+        // Close on outside click
+        window.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.classList.remove('active');
+            }
+        });
+
+        // Handle form submission
+        // Replace the existing form submission handler in your script section
+applicationForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const formData = new FormData(applicationForm);
+    
+    try {
+        const response = await fetch('/api/apply', {
+            method: 'POST',
+            body: formData // FormData handles multipart/form-data for file uploads
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+            alert('Application submitted successfully!');
+            modal.classList.remove('active');
+            applicationForm.reset();
+        } else {
+            throw new Error(data.error || 'Failed to submit application');
+        }
+    } catch (error) {
+        console.error('Error:', error);
+        alert(error.message);
+    }
+});
+    </script>
+</body>
+</html>

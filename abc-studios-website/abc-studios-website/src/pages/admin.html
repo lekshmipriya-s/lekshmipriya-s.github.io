@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | NexusMedia</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #6c63ff;
+            --secondary: #ff52b8;
+            --dark: #121212;
+            --darker: #0a0a0a;
+            --light: #f8f9fa;
+            --text: #e0e0e0;
+            --success: #00ff88;
+            --warning: #ffd600;
+            --danger: #ff4444;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: var(--dark);
+            color: var(--text);
+            min-height: 100vh;
+        }
+
+        .dashboard {
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            min-height: 100vh;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            background: var(--darker);
+            padding: 2rem;
+        }
+
+        .logo {
+            color: var(--text);
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-links {
+            list-style: none;
+        }
+
+        .nav-item {
+            margin-bottom: 1rem;
+        }
+
+        .nav-link {
+            color: var(--text);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.8rem;
+            border-radius: 8px;
+            transition: var(--transition);
+        }
+
+        .nav-link:hover, .nav-link.active {
+            background: var(--primary);
+        }
+
+        /* Main Content */
+        .main-content {
+            padding: 2rem;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        /* Cards */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background: var(--darker);
+            padding: 1.5rem;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .stat-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        /* Tables */
+        .table-container {
+            background: var(--darker);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        th {
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        /* Status badges */
+        .status {
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+
+        .status-pending { background: var(--warning); color: var(--dark); }
+        .status-accepted { background: var(--success); color: var(--dark); }
+        .status-rejected { background: var(--danger); color: var(--text); }
+
+        /* Actions */
+        .action-btn {
+            padding: 0.5rem;
+            border-radius: 5px;
+            background: none;
+            border: none;
+            color: var(--text);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .action-btn:hover {
+            color: var(--primary);
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo">
+                <i class="fas fa-shield-alt"></i>
+                <span>Admin Panel</span>
+            </div>
+            <ul class="nav-links">
+                <li class="nav-item">
+                    <a href="#dashboard" class="nav-link active">
+                        <i class="fas fa-home"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#applications" class="nav-link">
+                        <i class="fas fa-user-tie"></i>
+                        <span>Job Applications</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#tournaments" class="nav-link">
+                        <i class="fas fa-gamepad"></i>
+                        <span>Tournaments</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#settings" class="nav-link">
+                        <i class="fas fa-cog"></i>
+                        <span>Settings</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/" class="nav-link">
+                        <i class="fas fa-arrow-left"></i>
+                        <span>Back to Site</span>
+                    </a>
+                </li>
+            </ul>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="header">
+                <h1>Dashboard</h1>
+                <div class="user-info">
+                    <i class="fas fa-user-circle"></i>
+                    Admin
+                </div>
+            </div>
+
+            <!-- Stats -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon" style="background: rgba(108, 99, 255, 0.2); color: var(--primary);">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <div>
+                        <h3>Job Applications</h3>
+                        <p id="applicationCount">0</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon" style="background: rgba(255, 82, 184, 0.2); color: var(--secondary);">
+                        <i class="fas fa-gamepad"></i>
+                    </div>
+                    <div>
+                        <h3>Tournament Registrations</h3>
+                        <p id="tournamentCount">0</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Applications -->
+            <div class="table-container">
+                <h2>Recent Applications</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>Date</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="applicationsTable">
+                        <!-- Populated by JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Tournament Registrations -->
+            <div class="table-container">
+                <h2>Tournament Registrations</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Team Name</th>
+                            <th>Tournament</th>
+                            <th>Date</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tournamentsTable">
+                        <!-- Populated by JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Replace the existing script section
+
+    document.addEventListener('DOMContentLoaded', () => {
+        // Fetch data from backend
+        fetchDashboardData();
+
+        // Navigation
+        const navLinks = document.querySelectorAll('.nav-link');
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                navLinks.forEach(l => l.classList.remove('active'));
+                link.classList.add('active');
+            });
+        });
+    });
+
+    async function fetchDashboardData() {
+        try {
+            const [applications] = await Promise.all([
+                fetch('/api/applications').then(res => res.json())
+            ]);
+
+            updateDashboard(applications);
+        } catch (error) {
+            console.error('Error fetching dashboard data:', error);
+        }
+    }
+
+    function updateDashboard(applications) {
+        // Update counts
+        document.getElementById('applicationCount').textContent = applications.length;
+
+        // Update applications table
+        const applicationsTable = document.getElementById('applicationsTable');
+        applicationsTable.innerHTML = applications.map(app => `
+            <tr>
+                <td>${app.full_name}</td>
+                <td>${app.email}</td>
+                <td>${app.phone}</td>
+                <td>${new Date(app.applied_at).toLocaleDateString()}</td>
+                <td><span class="status status-${app.status}">${app.status}</span></td>
+                <td>
+                    <button class="action-btn" onclick="viewApplication(${app.id})">
+                        <i class="fas fa-eye"></i>
+                    </button>
+                    <button class="action-btn" onclick="updateStatus(${app.id})">
+                        <i class="fas fa-edit"></i>
+                    </button>
+                    <button class="action-btn" onclick="downloadResume('${app.resume_file}')">
+                        <i class="fas fa-download"></i>
+                    </button>
+                </td>
+            </tr>
+        `).join('');
+    }
+
+    async function updateStatus(appId) {
+        const status = prompt('Enter new status (pending/accepted/rejected):');
+        if (!status) return;
+        
+        try {
+            const response = await fetch(`/api/application/${appId}/status`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ status })
+            });
+            
+            if (response.ok) {
+                fetchDashboardData();
+            } else {
+                throw new Error('Failed to update status');
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            alert('Failed to update status');
+        }
+    }
+
+    async function viewApplication(appId) {
+        try {
+            const response = await fetch(`/api/application/${appId}`);
+            const data = await response.json();
+            
+            const details = `
+                Name: ${data.full_name}
+                Email: ${data.email}
+                Phone: ${data.phone}
+                Applied: ${new Date(data.applied_at).toLocaleString()}
+                Cover Letter: ${data.cover_letter || 'Not provided'}
+            `;
+            
+            alert(details);
+        } catch (error) {
+            console.error('Error:', error);
+            alert('Failed to fetch application details');
+        }
+    }
+
+    function downloadResume(filename) {
+        window.open(`/static/uploads/resumes/${filename}`, '_blank');
+    }
+    </script>
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tournaments | NexusMedia</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/tournaments.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Home Button -->
+    <div class="header-actions">
+        <a href="{{ url_for('home') }}" class="home-button"></a>
+            <i class="fas fa-home"></i>
+            <span>Back to Home</span>
+        </a>
+    </div>
+
+    <!-- Hero Section -->
+    <header class="hero-section">
+        <h1 class="hero-title">Esports Tournaments</h1>
+        <p class="hero-subtitle">Compete. Conquer. Create History.</p>
+    </header>
+
+    <!-- Tournaments Section -->
+    <div class="tournaments-container">
+        <div class="tournaments-grid">
+            <!-- Valorant Tournament -->
+            <div class="tournament-card">
+                <img src="../assets/images/valorant.jpg" alt="Valorant Tournament" class="card-image">
+                <div class="card-content">
+                    <i class="fas fa-crosshairs tournament-icon"></i>
+                    <h3 class="tournament-title">Valorant Championship</h3>
+                    <div class="tournament-info">
+                        <p>5v5 tactical shooter tournament</p>
+                        <p class="prize-pool">Prize Pool: $2,000</p>
+                        <div class="tournament-stats">
+                            <div class="stat">
+                                <div class="stat-value">32</div>
+                                <div class="stat-label">Teams</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-value">Mar 25</div>
+                                <div class="stat-label">Start Date</div>
+                            </div>
+                        </div>
+                        <a href="./tournament-register.html" class="register-btn">Register Now</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- League of Legends Tournament -->
+            <div class="tournament-card">
+                <img src="../assets/images/league.jpg" alt="League of Legends Tournament" class="card-image">
+                <div class="card-content">
+                    <i class="fas fa-chess-king tournament-icon"></i>
+                    <h3 class="tournament-title">LoL Battle Arena</h3>
+                    <div class="tournament-info">
+                        <p>5v5 MOBA tournament</p>
+                        <p class="prize-pool">Prize Pool: $1,500</p>
+                        <div class="tournament-stats">
+                            <div class="stat">
+                                <div class="stat-value">16</div>
+                                <div class="stat-label">Teams</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-value">Apr 1</div>
+                                <div class="stat-label">Start Date</div>
+                            </div>
+                        </div>
+                        <a href="./tournament-register.html" class="register-btn">Register Now</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FIFA Tournament -->
+            <div class="tournament-card">
+                <img src="../assets/images/fifa.jpg" alt="FIFA Tournament" class="card-image">
+                <div class="card-content">
+                    <i class="fas fa-futbol tournament-icon"></i>
+                    <h3 class="tournament-title">FIFA 24 Cup</h3>
+                    <div class="tournament-info">
+                        <p>1v1 football simulation tournament</p>
+                        <p class="prize-pool">Prize Pool: $800</p>
+                        <div class="tournament-stats">
+                            <div class="stat">
+                                <div class="stat-value">64</div>
+                                <div class="stat-label">Players</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-value">Mar 30</div>
+                                <div class="stat-label">Start Date</div>
+                            </div>
+                        </div>
+                        <a href="./tournament-register.html" class="register-btn">Register Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2025 NexusMedia Studios. All rights reserved.</p>
+    </footer>
+</body>
+</html>
