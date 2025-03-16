@@ -213,8 +213,11 @@ def submit_application():
         }), 500
 @app.route('/admin')
 def admin():
+    # Get both job applications and contact submissions
     applications = JobApplication.query.order_by(JobApplication.applied_at.desc()).all()
-    return render_template('admin.html', applications=applications)
+    contacts = Contact.query.order_by(Contact.submitted_at.desc()).all()
+    return render_template('admin.html', applications=applications, contacts=contacts)
+
 @app.route('/api/applications')
 def get_applications():
     try:
