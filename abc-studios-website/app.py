@@ -74,8 +74,9 @@ class JobApplication(db.Model):
 
 # Routes
 @app.route('/')
+@app.route('/home')
 def home():
-    return render_template('home.html')
+    return render_template('index.html')  # Changed from home.html to index.html
 
 @app.route('/about')
 def about():
