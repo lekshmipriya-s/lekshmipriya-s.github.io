@@ -27,7 +27,10 @@
         <div class="tournaments-grid">
             <!-- Valorant Tournament -->
             <div class="tournament-card">
-                <img src="../assets/images/valorant.jpg" alt="Valorant Tournament" class="card-image">
+                <img src="{{ url_for('static', filename='assets/images/valorant.jpg') }}" 
+                 alt="Valorant Tournament" 
+                 class="card-image"
+                 onerror="this.src='https://via.placeholder.com/400x250?text=Valorant'">
                 <div class="card-content">
                     <i class="fas fa-crosshairs tournament-icon"></i>
                     <h3 class="tournament-title">Valorant Championship</h3>
@@ -44,14 +47,17 @@
                                 <div class="stat-label">Start Date</div>
                             </div>
                         </div>
-                        <a href="./tournament-register.html" class="register-btn">Register Now</a>
+                        <a href="{{ url_for('tournament_register') }}" class="register-btn">Register Now</a>
                     </div>
                 </div>
             </div>
 
             <!-- League of Legends Tournament -->
             <div class="tournament-card">
-                <img src="../assets/images/league.jpg" alt="League of Legends Tournament" class="card-image">
+                <img src="{{ url_for('static', filename='assets/images/league.jpg') }}" 
+                 alt="League of Legends Tournament" 
+                 class="card-image"
+                 onerror="this.src='https://via.placeholder.com/400x250?text=LoL'">
                 <div class="card-content">
                     <i class="fas fa-chess-king tournament-icon"></i>
                     <h3 class="tournament-title">LoL Battle Arena</h3>
@@ -68,14 +74,17 @@
                                 <div class="stat-label">Start Date</div>
                             </div>
                         </div>
-                        <a href="./tournament-register.html" class="register-btn">Register Now</a>
+                        <a href="{{ url_for('tournament_register') }}" class="register-btn">Register Now</a>
                     </div>
                 </div>
             </div>
 
             <!-- FIFA Tournament -->
             <div class="tournament-card">
-                <img src="../assets/images/fifa.jpg" alt="FIFA Tournament" class="card-image">
+                <img src="{{ url_for('static', filename='assets/images/fifa.jpg') }}" 
+                 alt="FIFA Tournament" 
+                 class="card-image"
+                 onerror="this.src='https://via.placeholder.com/400x250?text=FIFA'">
                 <div class="card-content">
                     <i class="fas fa-futbol tournament-icon"></i>
                     <h3 class="tournament-title">FIFA 24 Cup</h3>
@@ -92,7 +101,7 @@
                                 <div class="stat-label">Start Date</div>
                             </div>
                         </div>
-                        <a href="./tournament-register.html" class="register-btn">Register Now</a>
+                        <a href="{{ url_for('tournament_register') }}" class="register-btn">Register Now</a>
                     </div>
                 </div>
             </div>

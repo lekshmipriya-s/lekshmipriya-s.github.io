@@ -27,7 +27,9 @@
 
 <div class="blog-container">
     <div class="blog-card">
-        <img src="../assets/images/digital_marketing.jpg" alt="Digital Marketing Trends">
+        <img src="{{ url_for('static', filename='assets/images/digital_marketing.jpg') }}" 
+             alt="Digital Marketing Trends"
+             onerror="this.src='https://via.placeholder.com/400x250'">
         <h2>Digital Marketing Trends</h2>
         <p class="blog-excerpt">Discover the latest trends in social media and SEO.</p>
         <p class="blog-content" style="display: none;">
@@ -37,7 +39,9 @@
     </div>
 
     <div class="blog-card">
-        <img src="../assets/images/event_planning.jpg" alt="Event Planning Tips">
+        <img src="{{ url_for('static', filename='assets/images/event_planning.jpg') }}" 
+             alt="Event Planning Tips"
+             onerror="this.src='https://via.placeholder.com/400x250'">
         <h2>Event Planning Tips</h2>
         <p class="blog-excerpt">Expert advice on managing successful events.</p>
         <p class="blog-content" style="display: none;">
@@ -47,7 +51,9 @@
     </div>
 
     <div class="blog-card">
-        <img src="../assets/images/behind_the_scenes.jpg" alt="Behind the Scenes">
+        <img src="{{ url_for('static', filename='assets/images/behind_the_scenes.jpg') }}" 
+             alt="Behind the Scenes"
+             onerror="this.src='https://via.placeholder.com/400x250'">
         <h2>Behind the Scenes</h2>
         <p class="blog-excerpt">Explore how our team works on media production.</p>
         <p class="blog-content" style="display: none;">
