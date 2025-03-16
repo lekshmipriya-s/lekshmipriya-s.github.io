@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, jsonify, send_from_directory
+from flask import Flask, render_template, request, jsonify, send_from_directory ,redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 from werkzeug.utils import secure_filename
@@ -94,8 +94,46 @@ def portfolio():
 def blog():
     return render_template('blog.html')
 
-@app.route('/contact')
+@app.route('/contact', methods=['GET', 'POST'])
 def contact():
+    if request.method == 'POST':
+        try:
+            # Get form data and print for debugging
+            name = request.form.get('name')
+            email = request.form.get('email')
+            phone = request.form.get('phone')
+            subject = request.form.get('subject')
+            message = request.form.get('message')
+
+            print(f"Received form data: name={name}, email={email}, phone={phone}, subject={subject}")
+
+            # Validate required fields
+            if not all([name, email, phone, subject, message]):
+                error_msg = "All fields are required"
+                print(f"Validation failed: Missing fields")
+                return render_template('contact.html', error=error_msg)
+
+            # Create new contact entry
+            new_contact = Contact(
+                name=name,
+                email=email,
+                phone=phone,
+                subject=subject,
+                message=message
+            )
+
+            # Add and commit to database
+            db.session.add(new_contact)
+            db.session.commit()
+            
+            print(f"Successfully saved contact with ID: {new_contact.id}")
+            return render_template('contact.html', success="Message sent successfully!")
+
+        except Exception as e:
+            print(f"Database error: {str(e)}")
+            db.session.rollback()
+            return render_template('contact.html', error="Failed to send message. Please try again.")
+
     return render_template('contact.html')
 
 @app.route('/tournaments')

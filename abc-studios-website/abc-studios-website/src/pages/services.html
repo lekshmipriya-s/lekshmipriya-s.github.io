@@ -18,12 +18,13 @@
     <div class="overlay">
         <h1 class="hero-title">Our Services</h1>
     </div>
-    <div class="header-actions">
-        <a href="{{ url_for('home') }}" class="home-button"></a>
-            <i class="fas fa-home"></i>
-            <span>Back to Home</span>
-        </a>
-    </div>
+    <!-- Fix the broken home button structure -->
+<div class="header-actions">
+    <a href="{{ url_for('home') }}" class="home-button">
+        <i class="fas fa-home"></i>
+        <span>Back to Home</span>
+    </a>
+</div>
 </header>
 
     <!-- Services Section -->

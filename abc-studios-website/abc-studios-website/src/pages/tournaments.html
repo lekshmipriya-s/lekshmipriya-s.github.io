@@ -9,12 +9,13 @@
 </head>
 <body>
     <!-- Home Button -->
-    <div class="header-actions">
-        <a href="{{ url_for('home') }}" class="home-button"></a>
-            <i class="fas fa-home"></i>
-            <span>Back to Home</span>
-        </a>
-    </div>
+    <!-- Fix the broken home button structure -->
+<div class="header-actions">
+    <a href="{{ url_for('home') }}" class="home-button">
+        <i class="fas fa-home"></i>
+        <span>Back to Home</span>
+    </a>
+</div>
 
     <!-- Hero Section -->
     <header class="hero-section">

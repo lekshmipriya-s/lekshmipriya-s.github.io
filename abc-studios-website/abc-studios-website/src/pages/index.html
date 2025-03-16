@@ -532,6 +532,10 @@
                 <i class="fas fa-user-plus"></i>
                 <span class="nav-tooltip">Join Us</span>
             </a>
+            <a href="{{ url_for('contact') }}" class="nav-item">
+                <i class="fas fa-envelope"></i>
+                <span class="nav-tooltip">Contact</span>
+            </a>
             <!-- Add this after the Join Us nav-item -->
 <a href="{{ url_for('admin') }}" class="nav-item">
     <i class="fas fa-user-shield"></i>
@@ -579,14 +583,25 @@
                 </div>
             </div>
             <!-- Update the Quick Links section in the footer -->
+<!-- Update the Quick Links section in the footer -->
 <div class="footer-section">
     <h3>Quick Links</h3>
     <ul class="footer-links">
-        <li><a href="./services.html"><i class="fas fa-chevron-right"></i>Our Services</a></li>
-        <li><a href="./portfolio.html"><i class="fas fa-chevron-right"></i>Portfolio</a></li>
-        <li><a href="./blog.html"><i class="fas fa-chevron-right"></i>Blog</a></li>
-        <li><a href="./tournaments.html"><i class="fas fa-chevron-right"></i>Esports</a></li>
-        <li><a href="./contact.html"><i class="fas fa-chevron-right"></i>Contact Us</a></li>
+        <li><a href="{{ url_for('services') }}"><i class="fas fa-chevron-right"></i>Our Services</a></li>
+        <li><a href="{{ url_for('portfolio') }}"><i class="fas fa-chevron-right"></i>Portfolio</a></li>
+        <li><a href="{{ url_for('blog') }}"><i class="fas fa-chevron-right"></i>Blog</a></li>
+        <li><a href="{{ url_for('tournaments') }}"><i class="fas fa-chevron-right"></i>Esports</a></li>
+        <li><a href="{{ url_for('contact') }}"><i class="fas fa-chevron-right"></i>Contact Us</a></li>
+    </ul>
+</div>
+
+<!-- Update the Contact Info section links -->
+<div class="footer-section">
+    <h3>Contact Info</h3>
+    <ul class="footer-links">
+        <li><a href="{{ url_for('contact') }}"><i class="fas fa-map-marker-alt"></i>123 Digital Avenue, Tech City</a></li>
+        <li><a href="tel:+1234567890"><i class="fas fa-phone"></i>+1 (234) 567-8900</a></li>
+        <li><a href="mailto:hello@nexusmedia.com"><i class="fas fa-envelope"></i>hello@nexusmedia.com</a></li>
     </ul>
 </div>
                 <h3>Contact Info</h3>

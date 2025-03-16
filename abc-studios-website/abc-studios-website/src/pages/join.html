@@ -256,12 +256,13 @@
     </style>
 </head>
 <body>
-    <div class="header-actions">
-        <a href="{{ url_for('home') }}" class="home-button"></a>
-            <i class="fas fa-home"></i>
-            <span>Back to Home</span>
-        </a>
-    </div>
+    <!-- Fix the broken home button structure -->
+<div class="header-actions">
+    <a href="{{ url_for('home') }}" class="home-button">
+        <i class="fas fa-home"></i>
+        <span>Back to Home</span>
+    </a>
+</div>
 <!-- Replace the existing jobs-grid content -->
 <header class="hero-section">
     <div class="overlay">
@@ -272,28 +273,40 @@
     
     <div class="jobs-grid">
         <div class="job-card">
-            <img src="../assets/images/job1.jpg" alt="Game Developer" class="job-image">
+            <img src="{{ url_for('static', filename='assets/images/job1.jpg') }}" 
+             alt="Game Developer" 
+             class="job-image"
+             onerror="this.src='https://placehold.co/400x250/png?text=Game+Developer'">
             <h3 class="job-title">Game Developer</h3>
             <p class="job-description">Join our game development team to create immersive gaming experiences using Unity and Unreal Engine.</p>
             <button class="apply-btn">Apply Now</button>
         </div>
 
         <div class="job-card">
-            <img src="../assets/images/job2.jpg" alt="3D Artist" class="job-image">
+            <img src="{{ url_for('static', filename='assets/images/job2.jpg') }}" 
+             alt="Game Developer" 
+             class="job-image"
+             onerror="this.src='https://placehold.co/400x250/png?text=Game+Developer'">
             <h3 class="job-title">3D Artist</h3>
             <p class="job-description">Create stunning 3D models and animations for our games and virtual experiences.</p>
             <button class="apply-btn">Apply Now</button>
         </div>
 
         <div class="job-card">
-            <img src="../assets/images/job3.jpg" alt="UI/UX Designer" class="job-image">
+            <img src="{{ url_for('static', filename='assets/images/job3.jpg') }}" 
+             alt="Game Developer" 
+             class="job-image"
+             onerror="this.src='https://placehold.co/400x250/png?text=Game+Developer'">
             <h3 class="job-title">UI/UX Designer</h3>
             <p class="job-description">Design intuitive and engaging user interfaces for our digital products and games.</p>
             <button class="apply-btn">Apply Now</button>
         </div>
 
         <div class="job-card">
-            <img src="../assets/images/job4.jpg" alt="Game Producer" class="job-image">
+            <img src="{{ url_for('static', filename='assets/images/job4.jpg') }}" 
+             alt="Game Developer" 
+             class="job-image"
+             onerror="this.src='https://placehold.co/400x250/png?text=Game+Developer'">
             <h3 class="job-title">Game Producer</h3>
             <p class="job-description">Lead and coordinate game development projects from concept to launch.</p>
             <button class="apply-btn">Apply Now</button>

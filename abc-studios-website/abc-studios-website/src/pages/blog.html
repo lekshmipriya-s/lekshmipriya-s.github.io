@@ -9,12 +9,13 @@
 </head>
 <body>
     <!-- Replace old header with new home button -->
-    <div class="header-actions">
-        <a href="{{ url_for('home') }}" class="home-button"></a>
-            <i class="fas fa-home"></i>
-            <span>Back to Home</span>
-        </a>
-    </div>
+    <!-- Fix the broken home button structure -->
+<div class="header-actions">
+    <a href="{{ url_for('home') }}" class="home-button">
+        <i class="fas fa-home"></i>
+        <span>Back to Home</span>
+    </a>
+</div>
 
     
 
@@ -111,16 +112,28 @@
                 </a>
             </div>
         </div>
-        <div class="footer-section">
-            <h3>Quick Links</h3>
-            <ul class="footer-links">
-                <li><a href="./services.html"><i class="fas fa-chevron-right"></i>Our Services</a></li>
-                <li><a href="./portfolio.html"><i class="fas fa-chevron-right"></i>Portfolio</a></li>
-                <li><a href="./blog.html"><i class="fas fa-chevron-right"></i>Blog</a></li>
-                <li><a href="./esports.html"><i class="fas fa-chevron-right"></i>Esports</a></li>
-                <li><a href="./contact.html"><i class="fas fa-chevron-right"></i>Contact Us</a></li>
-            </ul>
-        </div>
+        <!-- Update the Quick Links section in the footer -->
+<div class="footer-section">
+    <h3>Quick Links</h3>
+    <ul class="footer-links">
+        <li><a href="{{ url_for('services') }}"><i class="fas fa-chevron-right"></i>Our Services</a></li>
+        <li><a href="{{ url_for('portfolio') }}"><i class="fas fa-chevron-right"></i>Portfolio</a></li>
+        <li><a href="{{ url_for('tournaments') }}"><i class="fas fa-chevron-right"></i>Esports</a></li>
+        <li><a href="{{ url_for('contact') }}"><i class="fas fa-chevron-right"></i>Contact Us</a></li>
+    </ul>
+</div>
+
+
+
+<!-- Update the Contact Info section links -->
+<div class="footer-section">
+    <h3>Contact Info</h3>
+    <ul class="footer-links">
+        <li><a href="{{ url_for('contact') }}"><i class="fas fa-map-marker-alt"></i>123 Digital Avenue, Tech City</a></li>
+        <li><a href="tel:+1234567890"><i class="fas fa-phone"></i>+1 (234) 567-8900</a></li>
+        <li><a href="mailto:hello@nexusmedia.com"><i class="fas fa-envelope"></i>hello@nexusmedia.com</a></li>
+    </ul>
+</div>
         <div class="footer-section">
             <h3>Contact Info</h3>
             <ul class="footer-links">

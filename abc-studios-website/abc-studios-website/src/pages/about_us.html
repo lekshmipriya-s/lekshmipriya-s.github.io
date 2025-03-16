@@ -8,12 +8,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    <div class="header-actions">
-        <a href="{{ url_for('home') }}" class="home-button"></a>
-            <i class="fas fa-home"></i>
-            <span>Back to Home</span>
-        </a>
-    </div>
+    <!-- Fix the broken home button structure -->
+<div class="header-actions">
+    <a href="{{ url_for('home') }}" class="home-button">
+        <i class="fas fa-home"></i>
+        <span>Back to Home</span>
+    </a>
+</div>
     
     <header class="hero-section">
         <div class="overlay">
